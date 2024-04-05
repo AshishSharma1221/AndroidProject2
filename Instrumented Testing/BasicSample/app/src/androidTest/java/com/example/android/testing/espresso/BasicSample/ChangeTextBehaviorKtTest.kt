@@ -30,6 +30,20 @@ class ChangeTextBehaviorKtTest {
     }
 
     @Test
+    fun changeText_newActivity() {
+        onView(withId(R.id.editTextUserInput))
+            .perform(typeText("123"), closeSoftKeyboard())
+        onView(withId(R.id.activityChangeTextBtn)).perform(click())
+        onView(withId(R.id.show_text_view)).check(matches(withText("123")))
+    }
+
+    @Test
+    fun changeText_emptyInput_sameActivity() {
+        onView(withId(R.id.changeTextBt)).perform(click())
+        onView(withId(R.id.textToBeChanged)).check(matches(withText("")))
+    }
+
+    @Test
     fun changeText_abcdef_sameActivity() {
         onView(withId(R.id.editTextUserInput))
             .perform(typeText("abcdef"), closeSoftKeyboard())
