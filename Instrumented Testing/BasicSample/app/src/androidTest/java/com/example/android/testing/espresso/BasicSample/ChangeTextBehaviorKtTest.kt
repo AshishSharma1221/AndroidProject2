@@ -22,6 +22,13 @@ class ChangeTextBehaviorKtTest {
     @get:Rule var activityScenarioRule = activityScenarioRule<MainActivity>()
 
     @Test
+    fun changeText_nullInput_sameActivity() {
+        onView(withId(R.id.editTextUserInput)).perform(clearText())
+        onView(withId(R.id.changeTextBt)).perform(click())
+        onView(withId(R.id.textToBeChanged)).check(matches(withText("")))
+    }
+
+    @Test
     fun changeText_sameActivity() {
         onView(withId(R.id.editTextUserInput))
             .perform(typeText("123"), closeSoftKeyboard())
