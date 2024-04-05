@@ -16,7 +16,9 @@ class EmailValidatorTest {
     fun testInvalidEmail() {
         assertFalse(EmailValidator.isValidEmail("123@abc"))
  	assertFalse(EmailValidator.isValidEmail("123@abc..com"))
+	assertFalse(EmailValidator.isValidEmail("@abc.com"))
         assertFalse(EmailValidator.isValidEmail("testing123"))
         assertFalse(EmailValidator.isValidEmail(""))
+	assertFalse(EmailValidator.isValidEmail(null))
     }
 }
